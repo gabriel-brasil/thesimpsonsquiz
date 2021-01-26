@@ -13,10 +13,7 @@ function MetaTags() {
       <meta property="og:url" content="https://thesimpsonsquiz.gabriel-brasil.vercel.app/" />
       <meta property="og:title" content="The Simpsons" />
       <meta property="og:description" content="Projeto criado durante a Imersão React v2 da Alura." />
-      <meta property="og:image" content="https://github.com/gabriel-brasil/thesimpsonsquiz/blob/main/src/images/print-projeto.jpg" />
-      <meta property="fb:app_id" content="010203040506070809" />
-
-
+      <meta property="og:image" content="https://github.com/gabriel-brasil/thesimpsonsquiz/blob/main/src/images/print-projeto-small.jpg" />
     </Head>
   )
 
