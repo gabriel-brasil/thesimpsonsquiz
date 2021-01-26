@@ -5,6 +5,7 @@ import QuizLogo from '../src/components/QuizLogo'
 import QuizBackground from '../src/components/QuizBackground'
 import Footer from '../src/components/Footer'
 import GitHubCorner from '../src/components/GitHubCorner'
+import Head from '../src/components/Head'
 
 export const QuizContainer = styled.div`
   width: 100%;
@@ -19,35 +20,41 @@ export const QuizContainer = styled.div`
 
 export default function Home() {
   return (
-    <QuizBackground backgroundImage={db.bg}>
-      <QuizContainer>
 
-        <QuizLogo />
+    <>
+      <Head />
 
-        <Widget>
-          <Widget.Header>
-            <h1>The Simpsons</h1>
-          </Widget.Header>
-          <Widget.Content>
-            <p>Lorem Ipsum</p>
-          </Widget.Content>
-        </Widget>
+      <QuizBackground backgroundImage={db.bg}>
 
-        <Widget>
-          <Widget.Header>
-            <h1>Quizes da Galera</h1>
-          </Widget.Header>
-          <Widget.Content>
-            <p>Lorem Ipsum</p>
-          </Widget.Content>
-        </Widget>
+        <QuizContainer>
 
-        <Footer />
+          <QuizLogo />
 
-        <GitHubCorner projectUrl="https://github.com/gabriel-brasil/thesimpsonsquiz" />
+          <Widget>
+            <Widget.Header>
+              <h1>The Simpsons</h1>
+            </Widget.Header>
+            <Widget.Content>
+              <p>Lorem Ipsum</p>
+            </Widget.Content>
+          </Widget>
 
-      </QuizContainer>
-    </QuizBackground>
+          <Widget>
+            <Widget.Header>
+              <h1>Quizes da Galera</h1>
+            </Widget.Header>
+            <Widget.Content>
+              <p>Lorem Ipsum</p>
+            </Widget.Content>
+          </Widget>
+
+          <Footer />
+
+          <GitHubCorner projectUrl="https://github.com/gabriel-brasil/thesimpsonsquiz" />
+
+        </QuizContainer>
+      </QuizBackground>
+    </>
   )
 
 }
