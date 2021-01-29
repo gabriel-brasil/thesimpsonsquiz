@@ -37,12 +37,14 @@
         "dark": "#1769aa"
       },
       "secondary": {
-        "light": "ffee33",
-        "main": "#ffea00",
-        "dark": "#b2a300"
+        "light": "#ffdd4b",
+        "main": "#ffd51f",
+        "dark": "#b29515"
       },
-      "mainBg": "#333333",
+      "mainBgDark": "#333333",
+      "mainBgLight": "#FFFFFF",
       "contrastText": "#FFFFFF",
+      "contrastTextDark": "#333333",
       "wrong": "#FF5722",
       "success": "#4CAF50"
     },
