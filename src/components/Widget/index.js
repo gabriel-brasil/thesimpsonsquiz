@@ -46,7 +46,7 @@ Widget.Content = styled.div`
 Widget.Topic = styled.a`
   outline: 0;
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.contrastTextDark};
+  color: ${({ theme }) => theme.colors.contrastText};
   background-color: ${({ theme }) => theme.colors.primary.light};
   border: 1px solid ${({ theme }) => theme.colors.primary.dark};
   padding: 10px 15px;
@@ -58,8 +58,9 @@ Widget.Topic = styled.a`
   
   &:hover,
   &:focus {
-    background-color: ${({ theme }) => theme.colors.primary.dark};
-    color: ${({ theme }) => theme.colors.contrastText};
+    /* background-color: ${({ theme }) => theme.colors.primary.dark}; */
+    /* color: ${({ theme }) => theme.colors.contrastText}; */
+    transform: translatex(10px);
   }
 `;
 

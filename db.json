@@ -27,7 +27,7 @@
     }
   ],
   "external": [
-    ""
+    "https://color-theory-quiz.dafinysouza.vercel.app/"
   ],
   "theme": {
     "colors": {
@@ -45,7 +45,7 @@
       "mainBgLight": "#FFFFFF",
       "contrastText": "#FFFFFF",
       "contrastTextDark": "#333333",
-      "wrong": "#FF5722",
+      "wrong": "#e24c66",
       "success": "#4CAF50"
     },
     "borderRadius": "4px"
