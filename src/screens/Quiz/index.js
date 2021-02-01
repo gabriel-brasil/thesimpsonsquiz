@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { motion } from 'framer-motion';
 
 // import db from '../../../db.json';
 import QuizBackground from '../../components/QuizBackground';
@@ -13,7 +14,16 @@ import BackLinkArrow from '../../components/BackLinkArrow';
 function ResultWidget({ results, totalQuestions }) {
   const maxTotalQuestions = totalQuestions < 10 ? '0' : '';
   return (
-    <Widget>
+    <Widget
+      as={motion.section}
+      transition={{ duration: 0.5, delay: 0.1 }}
+      variants={{
+        show: { opacity: 1, x: '0' },
+        hidden: { opacity: 0, x: '-100%' },
+      }}
+      initial="hidden"
+      animate="show"
+    >
       <Widget.Header>
         Tela de Resultado:
       </Widget.Header>
@@ -35,12 +45,31 @@ function ResultWidget({ results, totalQuestions }) {
           perguntas */}
         </p>
         <ul>
-          {results.map((result, index) => (
-            <li key={`result__${result}`}>
-              {`Pergunta 0${index + 1}: ${result === true ? 'Acertou' : 'Errou'} `}
-            </li>
-          ))}
+          <AlternativesForm>
+            {results.map((result, index) => (
+              <li key={`result__${result}`}>
+                <Widget.Topic
+                  as="label"
+                  data-selected="true"
+                  data-status={result ? 'SUCCESS' : 'ERROR'}
+                >
+                  {`Pergunta 0${index + 1}: ${result === true ? 'Acertou' : 'Errou'} `}
+                </Widget.Topic>
+              </li>
+            ))}
+          </AlternativesForm>
         </ul>
+        <a
+          href="/"
+          style={{
+            display: 'block',
+            textAlign: 'center',
+            color: '#ffffff',
+            textDecoration: 'none',
+          }}
+        >
+          Voltar para o início
+        </a>
       </Widget.Content>
     </Widget>
   );
@@ -73,7 +102,16 @@ function QuestionWidget({
   const hasAlternativeSelected = selectedAlternative !== undefined;
   const [hasSubmitedAlternative, setHasSubmitedAlternative] = React.useState(undefined);
   return (
-    <Widget>
+    <Widget
+      as={motion.section}
+      transition={{ duration: 0.5, delay: 0.1 }}
+      variants={{
+        show: { opacity: 1, x: '0' },
+        hidden: { opacity: 0, x: '-100%' },
+      }}
+      initial="hidden"
+      animate="show"
+    >
       <Widget.Header>
         <BackLinkArrow href="/" />
         <h3>

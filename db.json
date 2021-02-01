@@ -1,5 +1,6 @@
 {
   "bg": "https://raw.githubusercontent.com/gabriel-brasil/thesimpsonsquiz/main/src/images/bg-main.jpg",
+  "bgMobile": "https://raw.githubusercontent.com/gabriel-brasil/thesimpsonsquiz/main/src/images/bg-mobile.jpg",
   "title": "The Simpsons Quiz",
   "description": "Teste os seus conhecimentos sobre The Simpsons e vamos ver o quanto você é um amarelão!",
   "questions": [
@@ -18,7 +19,7 @@
     {
       "image": "https://raw.githubusercontent.com/gabriel-brasil/thesimpsonsquiz/main/src/quizImages/question2.jpg",
       "title": "Por quem a Lisa Simpson nunca se apaixonou?",
-      "description": "Dia: Lisa recebe um cartão de dia dos namorados, mas ela não sente o mesmo.",
+      "description": "Dica: Lisa recebe um cartão de dia dos namorados, mas ela não sente o mesmo.",
       "answer": 1,
       "alternatives": [
         "Nelson Muntz",

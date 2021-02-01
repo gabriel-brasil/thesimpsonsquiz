@@ -21,7 +21,7 @@ export default function Home() {
   return (
 
     <>
-      <QuizBackground backgroundImage={db.bg}>
+      <QuizBackground backgroundImage={db.bg} backgroundImageMobile={db.bgMobile}>
 
         <QuizContainer>
 

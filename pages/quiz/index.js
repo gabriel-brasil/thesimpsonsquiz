@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 import db from '../../db.json';
@@ -29,8 +30,7 @@ function ResultWidget({ results, totalQuestions }) {
       </Widget.Header>
       <Widget.Content>
         <p>
-          {`Você acertou 
-          ${maxTotalQuestions}${results.filter((x) => x).length}/${maxTotalQuestions}${totalQuestions} perguntas! `}
+          {`Você acertou ${maxTotalQuestions}${results.filter((x) => x).length}/${maxTotalQuestions}${totalQuestions} perguntas! `}
 
           {/* Você acertou
           {' '}
@@ -45,16 +45,43 @@ function ResultWidget({ results, totalQuestions }) {
           perguntas */}
         </p>
         <ul>
-          {results.map((result, index) => (
-            <li key={`result__${result}`}>
-              {`Pergunta 0${index + 1}: ${result === true ? 'Acertou' : 'Errou'} `}
-            </li>
-          ))}
+          <AlternativesForm>
+            {results.map((result, index) => (
+              <li key={`result__${result}`}>
+                <Widget.Topic
+                  as="label"
+                  data-selected="true"
+                  data-status={result ? 'SUCCESS' : 'ERROR'}
+                >
+                  {`Pergunta 0${index + 1}: ${result === true ? 'Acertou' : 'Errou'} `}
+                </Widget.Topic>
+              </li>
+            ))}
+          </AlternativesForm>
         </ul>
+        <a
+          href="/"
+          style={{
+            display: 'block',
+            textAlign: 'center',
+            color: db.theme.colors.contrastText,
+            textDecoration: 'none',
+          }}
+        >
+          Voltar para o início
+        </a>
       </Widget.Content>
+
     </Widget>
   );
 }
+
+const LoadAnimate = styled.div`
+  background-color: ${db.theme.colors.primary.dark};
+  width: 50px;
+  height: 50px;
+  margin: auto;
+`;
 
 function LoadingWidget() {
   return (
@@ -63,7 +90,21 @@ function LoadingWidget() {
         Carregando...
       </Widget.Header>
       <Widget.Content>
-        [Desafio do Loading]
+        <LoadAnimate
+          as={motion.div}
+          animate={{
+            scale: [1, 1.5, 1.5, 1, 1],
+            rotate: [0, 0, 270, 270, 0],
+            borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+          }}
+          transition={{
+            duration: 2,
+            ease: 'easeInOut',
+            times: [0, 0.2, 0.5, 0.8, 1],
+            loop: Infinity,
+            repeatDelay: 1,
+          }}
+        />
       </Widget.Content>
     </Widget>
   );
@@ -164,8 +205,8 @@ function QuestionWidget({
           <Button type="submit" disabled={!hasAlternativeSelected || hasSubmitedAlternative}>
             Confirmar
           </Button>
-          {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
-          {isQuestionSubmited && !isCorrect && <p>Você errou!</p>}
+          {/* {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
+          {isQuestionSubmited && !isCorrect && <p>Você errou!</p>} */}
 
         </AlternativesForm>
 
@@ -199,7 +240,7 @@ export default function QuizPage() {
     // fetch()...
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
-    }, 1 * 1000);
+    }, 3 * 1000);
   }, []);
 
   function handleSubmitQuiz() {
@@ -213,7 +254,7 @@ export default function QuizPage() {
 
   return (
     <>
-      <QuizBackground backgroundImage={db.bg}>
+      <QuizBackground backgroundImage={db.bg} backgroundImageMobile={db.bgMobile}>
         <QuizContainer>
           <QuizLogo />
           {screenState === screenStates.QUIZ && (
