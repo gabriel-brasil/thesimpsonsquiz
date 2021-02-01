@@ -123,6 +123,7 @@ function QuestionWidget({
   const isCorrect = selectedAlternative === question.answer;
   const hasAlternativeSelected = selectedAlternative !== undefined;
   const [hasSubmitedAlternative, setHasSubmitedAlternative] = React.useState(undefined);
+
   return (
     <Widget
       as={motion.section}
@@ -159,17 +160,30 @@ function QuestionWidget({
           {question.description}
         </p>
 
+        {/* question.answer === alternativeIndex ? true : false; */}
+
         <AlternativesForm
           onSubmit={(event) => {
             event.preventDefault();
             setIsQuestionSubmited(true);
             setHasSubmitedAlternative(true);
+            const correctLabel = document.querySelector(`input#alternativ__${question.answer}`);
+            correctLabel.parentNode.dataset.res = 'correct';
+            const incorrectLabel = document.querySelector(`input#alternativ__${selectedAlternative}`);
+            if (incorrectLabel !== correctLabel) {
+              incorrectLabel.parentNode.dataset.res = 'incorrect';
+            }
             setTimeout(() => {
               addResult(isCorrect);
               onSubmit();
               setIsQuestionSubmited(false);
               setSelectedAlternative(undefined);
               setHasSubmitedAlternative(undefined);
+              const allLabel = document.querySelectorAll('input#alternativ__');
+              allLabel.forEach((el) => {
+                // eslint-disable-next-line no-param-reassign
+                el.parentNode.dataset.res = undefined;
+              });
             }, 2 * 1000);
           }}
         >
@@ -177,6 +191,7 @@ function QuestionWidget({
             const alternativeId = `alternativ__${alternativeIndex}`;
             const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
             const isSelected = selectedAlternative === alternativeIndex;
+
             return (
               <Widget.Topic
                 as="label"
@@ -184,6 +199,7 @@ function QuestionWidget({
                 htmlFor={alternativeId}
                 data-selected={isSelected}
                 data-status={isQuestionSubmited && alternativeStatus}
+                data-res="false"
               >
                 <input
                   style={{ display: 'none' }}
@@ -211,7 +227,7 @@ function QuestionWidget({
         </AlternativesForm>
 
       </Widget.Content>
-    </Widget>
+    </Widget >
   );
 }
 

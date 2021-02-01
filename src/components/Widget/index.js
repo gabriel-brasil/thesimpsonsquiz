@@ -55,12 +55,40 @@ Widget.Topic = styled.a`
   border-radius: ${({ theme }) => theme.borderRadius};
   transition: .3s;
   display: block;
+  position: relative;
   
   &:hover,
   &:focus {
     /* background-color: ${({ theme }) => theme.colors.primary.dark}; */
     /* color: ${({ theme }) => theme.colors.contrastText}; */
     transform: translatex(10px);
+  }
+
+  &[data-res="correct"]::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url('https://raw.githubusercontent.com/gabriel-brasil/thesimpsonsquiz/main/src/images/correct-icon.png');
+    top: 8.5px;
+    right: 10px;
+    border-radius: 30px;
+  }
+  
+  &[data-res="incorrect"] {
+    &[data-selected="true"]::before{
+      content: "";
+      position: absolute;
+      display: block;
+      width: 24px;
+      height: 24px;
+      background-image: url('https://raw.githubusercontent.com/gabriel-brasil/thesimpsonsquiz/main/src/images/incorrect-icon.png');
+      top: 8.5px;
+      right: 10px;
+      border-radius: 30px;
+    }
+      
   }
 `;
 

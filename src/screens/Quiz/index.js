@@ -142,12 +142,23 @@ function QuestionWidget({
             event.preventDefault();
             setIsQuestionSubmited(true);
             setHasSubmitedAlternative(true);
+            const correctLabel = document.querySelector(`input#alternativ__${question.answer}`);
+            correctLabel.parentNode.dataset.res = 'correct';
+            const incorrectLabel = document.querySelector(`input#alternativ__${selectedAlternative}`);
+            if (incorrectLabel !== correctLabel) {
+              incorrectLabel.parentNode.dataset.res = 'incorrect';
+            }
             setTimeout(() => {
               addResult(isCorrect);
               onSubmit();
               setIsQuestionSubmited(false);
               setSelectedAlternative(undefined);
               setHasSubmitedAlternative(undefined);
+              const allLabel = document.querySelectorAll('input#alternativ__');
+              allLabel.forEach((el) => {
+                // eslint-disable-next-line no-param-reassign
+                el.parentNode.dataset.res = false;
+              });
             }, 2 * 1000);
           }}
         >
@@ -183,9 +194,6 @@ function QuestionWidget({
           <Button type="submit" disabled={!hasAlternativeSelected || hasSubmitedAlternative}>
             Confirmar
           </Button>
-          {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
-          {isQuestionSubmited && !isCorrect && <p>Você errou!</p>}
-
         </AlternativesForm>
 
       </Widget.Content>
