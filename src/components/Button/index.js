@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Button = styled.button`
- background-color: ${({ theme }) => theme.colors.secondary.main};
-  color: ${({ theme }) => theme.colors.contrastTextDark};
+ background-color: ${({ theme }) => theme.colors.secondary.main || theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.contrastTextDark || theme.colors.contrastText};
   border-radius: ${({ theme }) => theme.borderRadius};
   border: 0;
   width: 100%;
@@ -22,7 +22,7 @@ const Button = styled.button`
     box-shadow: 0px 0px 9px #ffeb3b;
   }
   &:disabled {
-    background-color: ${({ theme }) => theme.colors.secondary.dark};
+    background-color: ${({ theme }) => theme.colors.secondary.dark || theme.colors.secondary};
     cursor: not-allowed;
   }
 `;

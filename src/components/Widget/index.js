@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const Widget = styled.div`
   margin-top: 24px;
   margin-bottom: 24px;
-  border: 1px solid ${({ theme }) => theme.colors.primary.dark};;
-  background-color: ${({ theme }) => theme.colors.primary.main};
+  border: 1px solid ${({ theme }) => theme.colors.primary.dark || theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary.main || theme.colors.mainBg};
   border-radius: 4px;
   overflow: hidden;
 
@@ -26,7 +26,7 @@ Widget.Header = styled.header`
   justify-content: flex-start;
   align-items: center;
   padding: 18px 32px;
-  background-color: ${({ theme }) => theme.colors.primary.dark};
+  background-color: ${({ theme }) => theme.colors.primary.dark || theme.colors.primary};
 `;
 
 Widget.Content = styled.div`
@@ -47,8 +47,8 @@ Widget.Topic = styled.a`
   outline: 0;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.contrastText};
-  background-color: ${({ theme }) => theme.colors.primary.light};
-  border: 1px solid ${({ theme }) => theme.colors.primary.dark};
+  background-color: ${({ theme }) => theme.colors.primary.light || theme.colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.primary.dark || theme.colors.primary};
   padding: 10px 15px;
   margin-bottom: 8px;
   cursor: pointer;
